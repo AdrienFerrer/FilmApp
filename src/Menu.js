@@ -9,7 +9,6 @@ import ListItem from '@material-ui/core/ListItem';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import {NavLink} from 'react-router-dom';
-import { Grid } from '@material-ui/core';
 
 class Menu extends Component {
   constructor(){
@@ -42,7 +41,6 @@ class Menu extends Component {
               <ListItem><NavLink onClick={this.toggleOpen} to ="/actors" activeClassName="selected-link">Actors</NavLink></ListItem>
             </List>
           </Drawer>
-          
       </div>
     );
   }
