@@ -9,8 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import {NavLink} from 'react-router-dom';
-
-import listFilms from './Films/listFilms';
+import { Grid } from '@material-ui/core';
 
 class Menu extends Component {
   constructor(){
@@ -23,11 +22,9 @@ class Menu extends Component {
     this.setState({open: !this.state.open})
   }
 
-
-
   render() {
     return (
-      <div>
+        <div className="row" >
           <AppBar>
             <Toolbar>
               <IconButton color="inherit" onClick={this.toggleOpen}>
@@ -40,7 +37,8 @@ class Menu extends Component {
           </AppBar>
           <Drawer open={this.state.open} onClose={this.toggleOpen}>
             <List>
-              <ListItem><NavLink onClick={this.toggleOpen} exact to ="/" activeClassName="selected-link">Films</NavLink></ListItem>
+              <ListItem><NavLink onClick={this.toggleOpen} exact to ="/" activeClassName="selected-link">Home</NavLink></ListItem>
+              <ListItem><NavLink onClick={this.toggleOpen} to ="/ListFilms" activeClassName="selected-link">Films</NavLink></ListItem>
               <ListItem><NavLink onClick={this.toggleOpen} to ="/actors" activeClassName="selected-link">Actors</NavLink></ListItem>
             </List>
           </Drawer>
