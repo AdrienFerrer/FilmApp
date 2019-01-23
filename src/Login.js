@@ -7,13 +7,14 @@ import Button from '@material-ui/core/Button';
 
 
 class Login extends Component {
-    constructor(){
-    super()
-    this.state={
+    constructor(props){
+    super(props)
+    this.state = {
         name:"",
         password : "",
         isLoggedIn: false
         }
+
         this.handleLogin = this.handleLogin.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -27,9 +28,15 @@ class Login extends Component {
         this.setState({password:event.target.value})
     }
 
-    handleLogin(){
-        alert(this.state.name)
-        this.setState({isLoggedIn:true})
+    handleLogin(event){
+        if(this.state.name === "admin" && this.state.password === "admin"){
+            this.setState({isLoggedIn:true})
+            this.props.callbackLog(true)
+        }
+        else{
+            alert('Login or PW incorrect')
+        }
+
     }
 
 
