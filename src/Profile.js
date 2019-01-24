@@ -61,7 +61,7 @@ class Profile extends Component {
                 <TextField 
                     type="text"
                     id="standard-name"
-                    label="Name"
+                    label="Lastname"
                     defaultValue = {sessionStorage.getItem('lastname')}
                     onChange = {this.handleLastNameChange}
                     value = {this.value}

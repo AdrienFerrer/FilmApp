@@ -5,8 +5,11 @@ import { BrowserRouter as Router,Route } from 'react-router-dom'
 
 import Home from './Home'
 import ListFilms from './Films/ListFilms'
+import Film from './Films/Film'
 import Login from './Login'
 import Profile from './Profile'
+import Actors from './Actors/Actors'
+import Actor from './Actors/Actor'
 
 class App extends Component {
   constructor(props){
@@ -29,8 +32,11 @@ class App extends Component {
         <Router>
           <div>
             <Home callback={this.callbackLogin.bind(this)}></Home>
-            <Route path='/ListFilms' component={ListFilms}></Route>
+            <Route exact path='/ListFilms' component={ListFilms}></Route>
+            <Route exact path='/Film/:id' component={Film}></Route>
             <Route path='/Profile' component={Profile}></Route>
+            <Route exact path='/Actors' component={Actors}></Route>
+            <Route exact path='/Actor/:id' component={Actor}></Route>
           </div>
       </Router>
       </div>
