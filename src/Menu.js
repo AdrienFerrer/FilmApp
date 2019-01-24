@@ -38,7 +38,8 @@ class Menu extends Component {
             <List>
               <ListItem><NavLink onClick={this.toggleOpen} exact to ="/" activeClassName="selected-link">Home</NavLink></ListItem>
               <ListItem><NavLink onClick={this.toggleOpen} to ="/ListFilms" activeClassName="selected-link">Films</NavLink></ListItem>
-              <ListItem><NavLink onClick={this.toggleOpen} to ="/actors" activeClassName="selected-link">Actors</NavLink></ListItem>
+              <ListItem><NavLink onClick={this.toggleOpen} to ="/Actors" activeClassName="selected-link">Actors</NavLink></ListItem>
+              <ListItem><NavLink onClick={this.toggleOpen} to ="/Profile" activeClassName="selected-link">Profile</NavLink></ListItem>
             </List>
           </Drawer>
       </div>

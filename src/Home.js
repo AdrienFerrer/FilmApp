@@ -1,47 +1,35 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-
 import Menu from './Menu'
-import ListFilms from './Films/ListFilms'
-import Login from './Login'
 
 import Button from '@material-ui/core/Button';
 
 class Home extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
         test:'',
-        isLoggedIn : true
     }
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  handleLogout(){
-    //this.setState({isLoggedIn:false})
+  handleLogout = () => {
+    sessionStorage.setItem('isLoggedIn',false)
+    this.props.callback()
   }
 
   render() {
     return (
-
         <div>
             <Menu/>
-            <Router>
-            <div>
-                <Route path="/ListFilms" component={ListFilms}/>
-            </div>
-            </Router>
+            <br/>
             <br/>
             <br/>
             <br/>
             Welcome on the App!
-            <Button variant="contained" onClick={this.handleLogout}>
-                    Logout
-            </Button>
+            <Button variant="contained" onClick={this.handleLogout}>Logout</Button>
         </div>
-
     );
   }
 }

@@ -1,60 +1,49 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { Redirect } from 'react-router-dom'
 import { BrowserRouter as Router,Route } from 'react-router-dom'
 
 import Home from './Home'
 import ListFilms from './Films/ListFilms'
 import Login from './Login'
-
-
+import Profile from './Profile'
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      isLoggedIn : false
+      isLoggedIn : sessionStorage.isLoggedIn
     }
-    this.callbackChild=this.callbackChild.bind(this);
+    this.callbackLogin=this.callbackLogin.bind(this)
   }
 
-  callbackChild = (Log) => {
-    console.log(Log)
-    this.setState({isLoggedIn:Log})
+  callbackLogin = () => {
+    this.setState({isLoggedIn:sessionStorage})
   }
-  
-  renderRedirect(props){
-    return <Home/>
-    /*if (this.state.isLoggedIn===true) {
-      return (
-        <Home/>
+
+  render(){
+    if (sessionStorage.isLoggedIn==="true"){
+      return(
+        <div className="App">
+
+        <Router>
+          <div>
+            <Home callback={this.callbackLogin.bind(this)}></Home>
+            <Route path='/ListFilms' component={ListFilms}></Route>
+            <Route path='/Profile' component={Profile}></Route>
+          </div>
+      </Router>
+      </div>
 
       )
     }
     else{
-      return (
-        <Login callbackLog={this.callbackChild.bind(this)}/>
+      return(
+        <div className="App">
+          <Login callback={this.callbackLogin.bind(this)}/>
+        </div>
       )
-    }*/
-  }
-
-  render(){
-    const isLoggedIn = this.state.isLoggedIn;
-    let Content;
-
-    if (isLoggedIn) {
-      Content = <Home />;
-    } else {
-      Content = <Login callbackLog={this.callbackChild.bind(this)}/>;
     }
-    return(
-      <div>
-        <Router>
-        {Content}
-        </Router>
-      </div>
-    )
   }
 }
 

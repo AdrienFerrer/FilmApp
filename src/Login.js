@@ -4,8 +4,6 @@ import './App.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-
-
 class Login extends Component {
     constructor(props){
     super(props)
@@ -30,13 +28,12 @@ class Login extends Component {
 
     handleLogin(event){
         if(this.state.name === "admin" && this.state.password === "admin"){
-            this.setState({isLoggedIn:true})
-            this.props.callbackLog(true)
+            sessionStorage.setItem('isLoggedIn',true)
+            this.props.callback()
         }
         else{
             alert('Login or PW incorrect')
         }
-
     }
 
 
