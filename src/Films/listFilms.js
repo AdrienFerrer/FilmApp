@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import Film from './Film'
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
+import {NavLink} from 'react-router-dom';
 
 class ListFilms extends Component {
   constructor(){
@@ -57,26 +63,36 @@ class ListFilms extends Component {
         "imageUrl": "./images/Resident_Evil_Vendetta.jpg",
         "rating": 4.2
     }]
+	
+	
     return (
       <div>
-        <br></br>
-        <br></br>
-          <h1>Films :</h1> 
-		     <div >
-		<ul>
+            <br/>
+            <h4>List of films</h4>
+            <Grid container justify="center">
+                <Grid item xs={4}>
+                    <List component="nav">
+					
+					
+					{this.film.map((anObjectMapped, index) => {
+                            const link = '/Film/'+anObjectMapped.id
+                            return (
+                                <ListItem key={anObjectMapped.title} button>
+                                    <ListItemText primary={anObjectMapped.title} />
+                                    <NavLink exact to ={link} activeClassName="selected-link"><Button variant="contained">Details</Button></NavLink>
+                                </ListItem>
+                            );
+                        })}
 
-			{
-			  this.film.map((item,t) =>(
-           
-			  <li  key={item.id}><Link to={'/Film/' + item.id}>{item.title}</Link></li>
-			  
-            ))
-            }
-			</ul>
+
+			  </List>
+                </Grid>
+            </Grid>
         </div>
-	
-      </div>
     )
+	
+	
+	
   }
 }
 
