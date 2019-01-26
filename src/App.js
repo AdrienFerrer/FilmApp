@@ -4,7 +4,7 @@ import './App.css';
 import { BrowserRouter as Router,Route } from 'react-router-dom'
 
 import Home from './Home'
-import ListFilms from './Films/ListFilms'
+import ListFilms from './Films/listFilms'
 import Film from './Films/Film'
 import Login from './Login'
 import Profile from './Profile'
